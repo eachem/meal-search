@@ -1,11 +1,11 @@
 
-import HomePage from '@/views/HomePage.vue'
+import HomePage from '@/views/HomePage.vue';
 <template>
   <nav>
-    <RouterLink :to="{name: 'HomePage'}">Home</RouterLink>
+    <RouterLink :to="{ name: 'Home' }">Home</RouterLink>
     <RouterLink :to="{name: 'MealsByName'}">Meals By Name</RouterLink>
     <RouterLink :to="{name: 'MealsByLetter'}">Meals By Letter</RouterLink>
-    <RouterLink :to="{name: 'MealsByIngredients'}">Meals By Ingredients</RouterLink>
+    <RouterLink :to="{name: 'MealByIngredients'}">Meals By Ingredients</RouterLink>
   </nav>
 </template>
 
