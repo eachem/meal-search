@@ -9,7 +9,7 @@ const route = useRoute()
 const meal = ref({})
 
 onMounted(() => {
-    api.get('lookup.php?i=${route.params.id}')
+    api.get(`lookup.php?i=${route.params.id}`)
         .then(({data}) => {
             meal.value = data.meals[0] || {}
         })
@@ -19,7 +19,7 @@ onMounted(() => {
 
 <template>
     <div class="m-10">
-        {{ meal }} 
+        <!-- {{ meal }}  -->
         <h1 class="text-5xl font-bold mb-10">{{ meal.strMeal }}</h1>
         <img :src="meal.strMealThumb" class="max-w-[30%] mb-10"/>
         <p class="mb-10">{{ meal.strInstructions }}"</p>
