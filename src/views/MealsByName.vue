@@ -5,6 +5,7 @@ import store from '@/store'
 import Meals from '@/components/Meals.vue'
 
 const route = useRoute()
+
 const keyword = ref('')
 const meals = computed(() => store.state.searchedMeals)
 
@@ -32,7 +33,7 @@ onMounted(() => {
     </div>
 
     <div class="p-8 pb-5">
-        <input type="text" v-model="keyword" @change="searchMeals" class="rounded-border-2 border-gray-400 w-full bg-white" placeholder="Enter Name" />
+        <input type="text" v-model="keyword"  class="rounded-border-2 border-gray-400 w-full bg-white" placeholder="Enter Name" @change="searchMeals" />
     </div>
 
     <Meals :meals="meals"></Meals>

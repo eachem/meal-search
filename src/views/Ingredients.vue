@@ -41,6 +41,7 @@ const searchIngrredients = computed(() => {
                     <img :src="`http://www.themealdb.com/images/ingredients/${ingredient.strIngredient}-Small.png`" />
                     <h3 class="text-2xl font-bold mb-2">{{ ingredient.strIngredient }}</h3>
             </RouterLink>
+            
         </div>
     </div>
 </template>
