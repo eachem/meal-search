@@ -13,13 +13,34 @@ onMounted(() => {
             ingredients.value = data.meals
     })
 })
+
+const searchIngrredients = computed(() => {
+    if (!searchIngrredients) return ingredients
+
+    return ingredients.value.filter( (i) => i.strIngredient.toLowerCase().include(keyword.value.toLocaleLowerCase()))
+})
+
 </script>
 
 <template>
     <div class="p-8 pb-0 text-blue-500">
-        <h1 class="text-4xl font-bold mb-4">Search Meals By Ingredients</h1>
+        <h1 class="text-4xl font-bold mb-4"> Search Meals By Ingredients </h1>
     </div>
 
-    {{ ingredients }}
+    <!-- {{ ingredients }} -->
 
+    <div class="p-10">
+        <input type="text" v-model="keyword" class="rounded border-2 border-gray-200 w-full bg-white mb-5" placeholder="Enter ingredients name" />
+
+        <div class="grid grid-cols-4 gap-5">
+            <RouterLink
+                v-for="ingredient in searchIngrredients"
+                :key="ingredient.idIngredient"
+                :t0="{ name: 'MealsByIngredients', params: {ingredient: ingredient.instrIngredient}} "
+                class="bg-white rounded p-3 mb-3 shadow block">
+                    <img :src="`http://www.themealdb.com/images/ingredients/${ingredient.strIngredient}-Small.png`" />
+                    <h3 class="text-2xl font-bold mb-2">{{ ingredient.strIngredient }}</h3>
+            </RouterLink>
+        </div>
+    </div>
 </template>
