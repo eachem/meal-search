@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, computed } from 'vue'
+import { onMounted, ref, computed } from 'vue'
 import useAPI from '@/composables/useAPI';
 
 const { api } = useAPI()
@@ -10,14 +10,14 @@ const ingredients = ref([])
 onMounted(() => {
     api.get('list.php?i=list')
         .then(({ data }) => {
-            ingredients.value = data.meals
+            ingredients.value = data.meals;
     })
 })
 
-const searchIngrredients = computed(() => {
-    if (!searchIngrredients) return ingredients
+const searchIngredients = computed(() => {
+    if (!searchIngredients) return ingredients;
 
-    return ingredients.value.filter( (i) => i.strIngredient.toLowerCase().include(keyword.value.toLocaleLowerCase()))
+    return ingredients.value.filter( (i) => i.strIngredient.toLowerCase().includes(keyword.value.toLowerCase()))
 })
 
 </script>
@@ -34,7 +34,7 @@ const searchIngrredients = computed(() => {
 
         <div class="grid grid-cols-4 gap-5">
             <RouterLink
-                v-for="ingredient in searchIngrredients"
+                v-for="ingredient in searchIngredients"
                 :key="ingredient.idIngredient"
                 :t0="{ name: 'MealsByIngredients', params: {ingredient: ingredient.instrIngredient}} "
                 class="bg-white rounded p-3 mb-3 shadow block">
